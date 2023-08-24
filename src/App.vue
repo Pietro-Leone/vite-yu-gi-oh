@@ -14,8 +14,8 @@ export default {
 
   <main>
     <div class="container mt-4">
-      <div class="row cards-title-bar">
-        <h3>found</h3>
+      <div class="row mx-0 mb-3 cards-title-bar">
+        <h4>found</h4>
       </div>
       <CardList/>
     </div>
