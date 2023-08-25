@@ -1,6 +1,7 @@
 <script>
 import Header from "./components/TheHeader.vue"
 import CardList from "./components/TheCardList.vue"
+import { store } from "./store"
 export default {
   components: {
     Header,
@@ -8,7 +9,7 @@ export default {
   },
   data() {
     return {
-      cardN: 0,
+      store,
       archetypes: [],
       selectArchetype: undefined,
       fetchCards: 0,
@@ -34,9 +35,9 @@ export default {
       </div>
       <!-- Cards Container -->
       <div class="row mx-0 my-3 cards-title-bar">
-        <h4>found {{ cardN.length }} cards</h4>
+        <h4>{{ store.cardsLength }}</h4>
       </div>
-      <CardList @cardNum="x => cardN = x" @archetypesNum="x => archetypes.push(...x)"
+      <CardList @archetypesNum="x => archetypes.push(...x)"
         @archetype="x => selectArchetype = x" @fetchCards="x => fetchCards = x" />
     </div>
   </main>

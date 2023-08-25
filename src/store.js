@@ -5,6 +5,7 @@ export const store = reactive({
   cards: [],
   archetypes: [],
   archetype: "",
+  cardsLength: 0,
 });
 
 export function fetchCards(archetype) {
@@ -18,6 +19,7 @@ export function fetchCards(archetype) {
   axios.get(url).then((response) => {
     store.cards = response.data.data;
     console.log(store.cards.length);
+    store.cardsLength = store.cards.length;
   });
 }
 
