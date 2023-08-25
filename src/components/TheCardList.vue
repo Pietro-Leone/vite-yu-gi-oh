@@ -12,7 +12,7 @@ export default {
     }
   },
   mounted() {
-    
+
     fetchCards();
     fetchArchetypes();
     setTimeout(() => {
@@ -21,6 +21,8 @@ export default {
     setTimeout(() => {
       this.$emit("archetypesNum", store.archetypes)
     }, 1000);
+    this.$emit("archetype", store.archetype)
+    this.$emit("fetchCards", fetchCards)
   }
 }
 </script>
