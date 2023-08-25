@@ -6,9 +6,10 @@ export default {
     Header,
     CardList,
   },
-  data(){
-    return{
+  data() {
+    return {
       cardN: 0,
+      archetypes: [],
     }
   }
 }
@@ -19,10 +20,18 @@ export default {
 
   <main>
     <div class="container mt-4">
-      <div class="row mx-0 mb-3 cards-title-bar">
+      <!-- Select Archetype -->
+      <div class="col-2">
+        <select class="form-select" aria-label="SelectArchetype">
+          <option value="" disabled selected hidden>Select Archetype</option>
+          <option :value="i" v-for="archetype in archetypes">{{ archetype.archetype_name }}</option>
+        </select>
+      </div>
+      <!-- Cards Container -->
+      <div class="row mx-0 my-3 cards-title-bar">
         <h4>found {{ cardN.length }} cards</h4>
       </div>
-      <CardList @cardNum="x => cardN = x" />
+      <CardList @cardNum="x => cardN = x" @archetypesNum="x => archetypes.push(...x)" />
     </div>
   </main>
 </template>
