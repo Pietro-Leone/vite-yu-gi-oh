@@ -16,9 +16,6 @@ export default {
     fetchCards();
     fetchArchetypes();
     setTimeout(() => {
-      this.$emit("cardNum", store.cards)
-    }, 1000);
-    setTimeout(() => {
       this.$emit("archetypesNum", store.archetypes)
     }, 1000);
     this.$emit("archetype", store.archetype)

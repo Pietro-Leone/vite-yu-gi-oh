@@ -24,26 +24,30 @@ export default {
   <main>
     <div class="container mt-4">
       <!-- Select Archetype -->
-      <div class="col-2">
-        <select class="form-select" v-model="selectArchetype" @click="fetchCards(selectArchetype)"
-          aria-label="SelectArchetype">
-          <option value="" disabled selected hidden>Select Archetype</option>
-          <option value=""></option>
-          <option :value="archetype.archetype_name" v-for="archetype in archetypes">{{ archetype.archetype_name }}
+      <div class="col-3">
+        <select class="form-select" v-model="selectArchetype">
+          <option selected @click="fetchCards(selectArchetype)" value="Select Archetype" class="text-body-tertiary">Select
+            Archetype</option>
+          <option @click="fetchCards(selectArchetype)" :value="archetype.archetype_name" v-for="archetype in archetypes">
+            {{ archetype.archetype_name }}
           </option>
         </select>
       </div>
       <!-- Cards Container -->
       <div class="row mx-0 my-3 cards-title-bar">
-        <h4>{{ store.cardsLength }}</h4>
+        <h4>Found {{ store.cardsLength }} cards</h4>
       </div>
-      <CardList @archetypesNum="x => archetypes.push(...x)"
-        @archetype="x => selectArchetype = x" @fetchCards="x => fetchCards = x" />
+      <CardList @archetypesNum="x => archetypes.push(...x)" @archetype="x => selectArchetype = x"
+        @fetchCards="x => fetchCards = x" />
     </div>
   </main>
 </template>
 
 <style lang="scss">
+main {
+  padding-bottom: 3rem;
+}
+
 .cards-title-bar {
   background-color: #303030;
   color: white;

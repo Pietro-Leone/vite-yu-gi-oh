@@ -4,21 +4,19 @@ import { reactive } from "vue";
 export const store = reactive({
   cards: [],
   archetypes: [],
-  archetype: "",
+  archetype: "Select Archetype",
   cardsLength: 0,
 });
 
 export function fetchCards(archetype) {
   let url = "";
-  console.log(archetype);
-  if (archetype === undefined || archetype === "") {
+  if (archetype === undefined || archetype === "Select Archetype") {
     url = "https://db.ygoprodeck.com/api/v7/cardinfo.php?&num=20&offset=0";
   } else {
     url = `https://db.ygoprodeck.com/api/v7/cardinfo.php?&archetype=${archetype}&num=20&offset=0`;
   }
   axios.get(url).then((response) => {
     store.cards = response.data.data;
-    console.log(store.cards.length);
     store.cardsLength = store.cards.length;
   });
 }
