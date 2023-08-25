@@ -1,6 +1,6 @@
 <script>
 
-import { store , fetchCards } from "../store"
+import { store, fetchCards } from "../store"
 import Card from "./Card.vue"
 export default {
   components: {
@@ -8,11 +8,17 @@ export default {
   },
   data() {
     return {
-      store
+      store,
     }
   },
-  mounted(){
+  methods: {
+
+  },
+  mounted() {
     fetchCards();
+    setTimeout(() => {
+      this.$emit("cardNum", store.cards)
+    }, 1000);
   }
 }
 </script>
