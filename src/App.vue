@@ -11,8 +11,7 @@ export default {
     return {
       store,
       archetypes: [],
-      selectArchetype: undefined,
-      fetchCards: 0,
+      fetchCards:0,
     }
   }
 }
@@ -25,10 +24,10 @@ export default {
     <div class="container mt-4">
       <!-- Select Archetype -->
       <div class="col-3">
-        <select class="form-select" v-model="selectArchetype">
-          <option selected @click="fetchCards(selectArchetype)" value="Select Archetype" class="text-body-tertiary">Select
+        <select class="form-select" v-model="store.archetype">
+          <option selected @click="fetchCards" value="" class="text-body-tertiary">Select
             Archetype</option>
-          <option @click="fetchCards(selectArchetype)" :value="archetype.archetype_name" v-for="archetype in archetypes">
+          <option @click="fetchCards" :value="archetype.archetype_name" v-for="archetype in archetypes">
             {{ archetype.archetype_name }}
           </option>
         </select>
